@@ -1,0 +1,132 @@
+/**
+ * BLE Scanner Dashboard - Main Stylesheet
+ * 
+ * Provides custom styling for the BLE Scanner Dashboard application.
+ * Extends Bootstrap's default styles with application-specific designs.
+ * 
+ * Components Styled:
+ * - Navigation bar
+ * - Dashboard cards
+ * - Charts and containers
+ * - Data tables
+ * - Status indicators
+ * 
+ * Color Scheme:
+ * - Primary: #0d6efd (Bootstrap primary blue)
+ * - Secondary: #6c757d
+ * - Success: #198754
+ * - Warning: #ffc107
+ * - Danger: #dc3545
+ * 
+ * Created: 14/Apr/2025
+ * Last Updated: 14/Apr/2025
+ */
+
+/* Global Styles */
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    color: #495057;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.card-title .bi-info-circle {
+    cursor: help;
+    margin-left: 0.5rem;
+}
+
+#totalScans, #uniqueDevices {
+    color: #0d6efd;
+    font-weight: 600;
+}
+
+#timeRange {
+    color: #6c757d;
+    font-size: 1.1rem;
+}
+
+.table th {
+    font-weight: 600;
+    color: #495057;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+canvas {
+    width: 100% !important;
+}
+
+/* Tooltip customization */
+.tooltip-inner {
+    max-width: 200px;
+}
+
+.stat-card {
+    padding: 1rem;
+    text-align: center;
+}
+
+.stat-card .card-title {
+    color: #6c757d;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+/* Table styling */
+.table-responsive {
+    margin-bottom: 1rem;
+}
+
+/* Status indicators */
+.status-indicator {
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.status-active {
+    background-color: #198754;
+}
+
+.status-inactive {
+    background-color: #dc3545;
+}
+
+/* Chart containers */
+.chart-container {
+    position: relative;
+    min-height: 400px;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+} 

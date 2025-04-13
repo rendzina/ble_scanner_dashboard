@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Load Analysis - BLE Scanner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <i class="bi bi-bluetooth"></i>
+                BLE Scanner Dashboard
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/device-activity.html">Device Activity</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/environment-stats.html">Environmental Analysis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/device-types.html">Device Classification</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/network-stats.html">Network Load</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-4">
+        <!-- Peak Usage Statistics -->
+        <div class="row g-4 mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Peak Usage Periods
+                            <i class="bi bi-info-circle" data-bs-toggle="tooltip" 
+                               title="Times with highest network activity"></i>
+                        </h5>
+                        <div class="chart-container">
+                            <canvas id="peakUsageChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Channel Utilization -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Channel Utilization
+                            <i class="bi bi-info-circle" data-bs-toggle="tooltip" 
+                               title="Network channel usage patterns"></i>
+                        </h5>
+                        <div class="chart-container">
+                            <canvas id="channelUtilizationChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Device Transmission Rates
+                            <i class="bi bi-info-circle" data-bs-toggle="tooltip" 
+                               title="Average transmissions per device"></i>
+                        </h5>
+                        <div class="chart-container">
+                            <canvas id="transmissionRatesChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Network Load Summary Table -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Network Load Summary
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" 
+                       title="Detailed network load statistics"></i>
+                </h5>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Time Period</th>
+                                <th>Active Devices</th>
+                                <th>Total Transmissions</th>
+                                <th>Avg Transmissions/Device</th>
+                                <th>Signal Strength</th>
+                            </tr>
+                        </thead>
+                        <tbody id="networkLoadList">
+                            <tr>
+                                <td colspan="5" class="text-center">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="/js/network-stats.js"></script>
+</body>
+</html> 

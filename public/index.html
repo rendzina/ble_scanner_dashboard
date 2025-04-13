@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLE Scanner Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-bluetooth"></i>
+                BLE Scanner Dashboard
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/device-activity.html">Device Activity</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/environment-stats.html">Environmental Analysis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/device-types.html">Device Classification</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/network-stats.html">Network Load</a>
+                    </li>
+                </ul>
+            </div>
+            <span class="navbar-text text-light">
+                <i class="bi bi-clock"></i>
+                Last Updated: <span id="lastUpdate">Never</span>
+            </span>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-4">
+        <!-- Overview Statistics -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <div class="card stat-card">
+                    <h5 class="card-title">
+                        <i class="bi bi-search"></i>
+                        Total Scans
+                        <i class="bi bi-info-circle" data-bs-toggle="tooltip" 
+                           title="Total number of BLE device readings recorded"></i>
+                    </h5>
+                    <div class="stat-value" id="totalScans">-</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card stat-card">
+                    <h5 class="card-title">
+                        <i class="bi bi-phone"></i>
+                        Unique Devices
+                        <i class="bi bi-info-circle" data-bs-toggle="tooltip" 
+                           title="Number of unique BLE devices detected"></i>
+                    </h5>
+                    <div class="stat-value" id="uniqueDevices">-</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card stat-card">
+                    <h5 class="card-title">
+                        <i class="bi bi-clock-history"></i>
+                        Time Range
+                        <i class="bi bi-info-circle" data-bs-toggle="tooltip" 
+                           title="Time span of recorded data"></i>
+                    </h5>
+                    <div class="stat-value" id="timeRange">-</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Hourly Activity
+                            <i class="bi bi-info-circle" data-bs-toggle="tooltip" 
+                               title="Number of scans recorded per hour of the day"></i>
+                        </h5>
+                        <div class="chart-container">
+                            <canvas id="hourlyChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            RSSI Distribution
+                            <i class="bi bi-info-circle" data-bs-toggle="tooltip" 
+                               title="Signal strength distribution for detected devices"></i>
+                        </h5>
+                        <div class="chart-container">
+                            <canvas id="rssiChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Device List -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Detected Devices
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" 
+                       title="List of all unique devices detected"></i>
+                </h5>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Device Fingerprint</th>
+                                <th>First Seen</th>
+                                <th>Last Seen</th>
+                                <th>Reading Count</th>
+                                <th>Average RSSI</th>
+                                <th>Estimated Distance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="deviceList">
+                            <tr>
+                                <td colspan="6" class="text-center">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Toast -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="errorToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-danger text-white">
+                <i class="bi bi-exclamation-triangle me-2"></i>
+                <strong class="me-auto">Error</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="errorToastBody">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="/js/dashboard.js"></script>
+    <script>
+        // Initialize tooltips
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function(tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+</body>
+</html> 
