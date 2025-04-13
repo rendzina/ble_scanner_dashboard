@@ -76,6 +76,7 @@ npm start
 The application will be available at `http://localhost:8080`
 
 ## Project Structure
+```text
 ble_scanner_dashboard/
 ├── public/ # Static files directory
 │ ├── css/ # Stylesheet files
@@ -107,6 +108,7 @@ ble_scanner_dashboard/
 ├── package.json # Project metadata and dependencies
 ├── package-lock.json # Dependency lock file
 └── README.md # Project documentation
+```
 
 ### Key Components
 
