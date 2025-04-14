@@ -35,6 +35,8 @@ console.log('Imported stats router');
 ////////////////////////////////////////////////////////////
 // CHANGE THIS PATH TO THE PATH OF YOUR DATABASE FILE
 // e.g. /home/pi/ble_scanner/ble_scans.db
+// or create and point at a local softlink to the remote database file
+// e.g. ln -s /remote/path/ble_scanner/ble_scans.db ble_scans.db
 ////////////////////////////////////////////////////////////
 const dbPath = path.resolve(__dirname, 'ble_scans.db');
 console.log('Database path:', dbPath);

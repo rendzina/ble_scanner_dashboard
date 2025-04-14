@@ -71,8 +71,18 @@ npm install
 cp .env.example .env
 # Edit .env with your configurations
 ```
+4. Database
+It is assumed the SQLite database is held remotely in the seperate folder of the 
+ble_scanner app (see https://github.com/rendzina/ble_scanner). The index.js file 
+here (line 38) can be adjusted with the location. Alternatively, a softlink can 
+be made from the remote database, and permissions set accordingly, thus:
+```bash
+ln -s /remote folder of ble_scanner/db_scans.db db_scans.db
+sudo usermod -a -G admin www-data       [may be required]
+sudo chmod 664 ble_scans.db             [may be required]
+```
 
-4. Start the server:
+5. Start the server:
 ```bash
 npm start
 ```
