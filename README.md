@@ -1,7 +1,7 @@
 # BLE Scanner Dashboard
 
 ## Overview
-A real-time dashboard for visualising and analysing Bluetooth Low Energy (BLE) scanner data. This application provides comprehensive insights into BLE device activities, environmental factors, and network patterns. The app can be used to gain insights from visitor traffic at conferences and ehibitions.
+A real-time dashboard for visualising and analysing Bluetooth Low Energy (BLE) scanner data. This application provides comprehensive insights into BLE device activities, environmental factors, and network patterns. The app can be used to gain insights from visitor traffic at conferences and exhibitions.
 
 This dashboard is associated with the parallel BLE scanner app, see https://github.com/rendzina/ble_scanner
 
@@ -71,6 +71,7 @@ npm install
 cp .env.example .env
 # Edit .env with your configurations
 ```
+
 4. Database
 It is assumed the SQLite database is held remotely in the seperate folder
 of the ble_scanner app (see https://github.com/rendzina/ble_scanner). The
@@ -150,7 +151,7 @@ ble_scanner_dashboard/
 - `stats.js`: Statistical analysis and API endpoint implementations
 
 #### Database (`/database`)
-- `ble_scans.db`: SQLite database containing BLE scan records
+- `ble_scans.db`: SQLite database containing BLE scan records. Can be a softlink to the actual location.
 
 #### Configuration Files
 - `.gitignore`: Specifies which files Git should ignore
