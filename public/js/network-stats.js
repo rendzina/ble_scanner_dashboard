@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Channel Activity by Hour'
+                            text: 'Channel Utilisation Over Time'
                         }
                     },
                     scales: {
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             beginAtZero: true,
                             title: {
                                 display: true,
-                                text: 'Number of Active Devices'
+                                text: 'Utilisation %'
                             }
                         }
                     }

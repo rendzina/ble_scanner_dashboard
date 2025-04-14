@@ -8,6 +8,8 @@ This dashboard is associated with the parallel BLE scanner app, see https://gith
 Created: 14/Apr/2025
 Last Updated: 14/Apr/2025
 
+![BLE Scanner Dashboard Interface](git_images/ble_scanner_dashboard_gui01.png)
+
 ## Features
 
 ### Real-time Monitoring

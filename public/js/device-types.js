@@ -212,4 +212,16 @@ function formatSignalPattern(stats) {
 function formatPresencePattern(stats) {
     if (!stats) return 'N/A';
     return `${stats.days_active} days<br>${stats.total_hours} hours total`;
+}
+
+// Update category labels
+const categories = {
+    behaviour: 'Behaviour',
+    categorisation: 'Categorisation',
+    optimisation: 'Optimisation'
+};
+
+// Update tooltip text
+function formatTooltip(context) {
+    return `Device Behaviour: ${context.raw.label}`;
 } 

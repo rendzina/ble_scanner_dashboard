@@ -277,4 +277,10 @@ document.addEventListener('DOMContentLoaded', () => {
         loadOverview();
         loadDeviceList();
     }, 300000);
-}); 
+});
+
+// Update status messages and labels
+function updateStatus(data) {
+    document.getElementById('optimisationStatus').textContent = data.status;
+    document.getElementById('utilisationLevel').textContent = data.level;
+} 
