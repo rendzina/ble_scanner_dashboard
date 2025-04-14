@@ -52,6 +52,8 @@ Last Updated: 14/Apr/2025
 - npm (Node Package Manager)
 - SQLite3
 
+![BLE Scanner Dashboard Interface](public/git_images/ble_scanner_dashboard_gui02.png)
+
 ### Setup
 1. Clone the repository:
 ```bash
