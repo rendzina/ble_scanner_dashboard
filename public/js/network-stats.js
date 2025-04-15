@@ -65,6 +65,19 @@ document.addEventListener('DOMContentLoaded', function() {
                         title: {
                             display: true,
                             text: 'Network Activity Over Time'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.dataset.label || '';
+                                    const value = context.raw;
+                                    if (context.datasetIndex === 0) {
+                                        return `${label}: ${value} scans`;
+                                    } else {
+                                        return `${label}: ${value} devices`;
+                                    }
+                                }
+                            }
                         }
                     },
                     scales: {

@@ -223,6 +223,19 @@ document.addEventListener('DOMContentLoaded', function() {
                         title: {
                             display: true,
                             text: 'Device Presence Over Time'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.dataset.label || '';
+                                    const value = context.raw;
+                                    if (context.datasetIndex === 0) {
+                                        return `${label}: ${value} devices`;
+                                    } else {
+                                        return `${label}: ${value.toFixed(1)} hours`;
+                                    }
+                                }
+                            }
                         }
                     },
                     scales: {
