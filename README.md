@@ -90,6 +90,24 @@ npm start
 
 The application will be available at `http://localhost:8080`
 
+### Automatically starting the ble_scanner Node.js applications on boot
+
+The ble_scanner app has been developed to run on a Raspberry Pi computer. To ensure the Node.js app starts up on boot, we can use the pm2 (Process manager) tool. A good explanation of setting this up is at https://rebeccamdeprey.com/blog/automatically-start-nodejs-applications-when-your-raspberry-pi-boots-up. Official page https://pm2.keymetrics.io/docs/usage/quick-start/.
+
+```bash
+sudo npm install pm2 -g
+cd ble_scanner
+pm2 start scanner.js --name ble_scanner
+pm2 startup
+```
+To implement a run on bootup strategy, run the command line created by the 'pm2 startup' command. This updates the $PATH setting.
+
+Check the ExecStart command in /etc/systemd/system/pm2-pi.service, then:
+```bash
+pm2 save
+```
+The Raspberry Pi will now start the app on boot. Also, the commands 'pm2 list', 'start', 'stop', 'delete' and 'logs' can be used as required. 
+
 ## Project Structure
 ```text
 ble_scanner_dashboard/
