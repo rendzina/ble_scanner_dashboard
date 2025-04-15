@@ -106,7 +106,7 @@ Check the ExecStart command in /etc/systemd/system/pm2-pi.service, then:
 ```bash
 pm2 save
 ```
-The Raspberry Pi will now start the app on boot. Also, the commands 'pm2 list', 'start', 'stop', 'delete' and 'logs' can be used as required. 
+The Raspberry Pi will now start the app on boot. Also, the commands 'pm2 list', 'start', 'stop', 'delete' and 'logs' can be used as required.
 
 ## Project Structure
 ```text

@@ -53,6 +53,17 @@ function formatDate(dateString) {
     });
 }
 
+// Calculate elapsed time between two dates
+function calculateElapsedTime(startDate, endDate) {
+    const diffInHours = Math.abs(endDate - startDate) / (1000 * 60 * 60);
+    if (diffInHours >= 24) {
+        const days = Math.floor(diffInHours / 24);
+        const hours = Math.floor(diffInHours % 24);
+        return `${days} day${days !== 1 ? 's' : ''} ${hours} hour${hours !== 1 ? 's' : ''}`;
+    }
+    return `${Math.floor(diffInHours)} hour${diffInHours !== 1 ? 's' : ''}`;
+}
+
 // Fetch and display overview statistics
 async function loadOverview() {
     try {
@@ -70,8 +81,9 @@ async function loadOverview() {
         if (data.timeRange?.first_scan && data.timeRange?.last_scan) {
             const firstScan = new Date(data.timeRange.first_scan);
             const lastScan = new Date(data.timeRange.last_scan);
+            const elapsedTime = calculateElapsedTime(firstScan, lastScan);
             document.getElementById('timeRange').textContent = 
-                `${formatDate(firstScan)} to ${formatDate(lastScan)}`;
+                `${formatDate(firstScan)} to ${formatDate(lastScan)} (${elapsedTime})`;
         } else {
             document.getElementById('timeRange').textContent = 'No data available';
         }
